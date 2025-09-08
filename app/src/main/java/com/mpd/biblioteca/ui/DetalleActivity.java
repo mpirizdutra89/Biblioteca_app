@@ -20,10 +20,20 @@ public class DetalleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         /**
-        * Configuracion Binding
-        * */
+         * Configuracion Binding
+         * */
         detalleBinding=ActivityDetalleBinding.inflate(getLayoutInflater());
         setContentView(detalleBinding.getRoot());
+
+        EdgeToEdge.enable(this);
+
+// Usar la vista raíz de tu binding directamente
+        ViewCompat.setOnApplyWindowInsetsListener(detalleBinding.getRoot(), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
 
         /**
          *Configuracion ViewModel Detalle

@@ -1,9 +1,10 @@
 package com.mpd.biblioteca.modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class Libro {
+public class Libro   implements Serializable {
     private String titulo;
     private String autor;
     private String detalle;

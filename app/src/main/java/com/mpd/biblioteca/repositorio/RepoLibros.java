@@ -9,10 +9,11 @@ import java.util.HashSet;
 
 public class RepoLibros {
 
-    private final ArrayList<Libro> libros = new ArrayList<>();
+    private final ArrayList<Libro> libros;
 
     public RepoLibros() {
-
+        libros = new ArrayList<>();
+        
         libros.add(new Libro("El Principito", "Antoine de Saint-Exupéry", "La historia de un pequeño príncipe que viaja por el universo, aprendiendo sobre el amor, la amistad y el significado de la vida. Una fábula universal con un profundo mensaje filosófico. Ideal para todas las edades.", new HashSet<>(Arrays.asList(GeneroEnum.CUENTO, GeneroEnum.FILOSOFIA))));
         libros.add(new Libro("1984", "George Orwell", "En un futuro distópico, Winston Smith lucha contra un gobierno totalitario que lo vigila en cada aspecto de su vida. Una novela que explora el control del poder, la manipulación de la información y la pérdida de la individualidad.", new HashSet<>(Arrays.asList(GeneroEnum.CIENCIA_FICCION, GeneroEnum.DRAMA, GeneroEnum.THRILLER))));
         libros.add(new Libro("Cien Años de Soledad", "Gabriel García Márquez", "La historia de la familia Buendía a través de siete generaciones en el mítico pueblo de Macondo. Una obra cumbre del realismo mágico que explora temas como el amor, la soledad y la complejidad de la naturaleza humana.", new HashSet<>(Arrays.asList(GeneroEnum.NOVELA_HISTORICA, GeneroEnum.DRAMA))));
@@ -47,7 +48,7 @@ public class RepoLibros {
         //por título exacto
         for (Libro libro : libros) {
             if (libro.getTitulo().toLowerCase().equals(lowerCaseQuery)) {
-                return libro; // Retorna el primer libro con coincidencia exacta
+                return libro;
             }
         }
 
