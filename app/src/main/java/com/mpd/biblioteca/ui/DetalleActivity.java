@@ -1,6 +1,7 @@
 package com.mpd.biblioteca.ui;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,8 @@ public class DetalleActivity extends AppCompatActivity {
          * Configuracion Binding
          * */
         detalleBinding=ActivityDetalleBinding.inflate(getLayoutInflater());
+        detalleViewModel=new ViewModelProvider(this).get(DetalleViewModel.class);
+
         setContentView(detalleBinding.getRoot());
 
         EdgeToEdge.enable(this);
@@ -35,14 +38,13 @@ public class DetalleActivity extends AppCompatActivity {
         });
 
 
-        /**
-         *Configuracion ViewModel Detalle
-         * Anexamos la logica a la vista con observer y la llamada de metodos
-         * */
-        detalleViewModel=new ViewModelProvider(this).get(DetalleViewModel.class);
+        /** Boton volver **/
+       detalleBinding.btnVolver.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               finish();
+           }
+       });
 
-        /**
-         * Observer
-         * **/
     }
 }
