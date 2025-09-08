@@ -3,6 +3,8 @@ package com.mpd.biblioteca.modelo;
 import android.text.TextUtils;
 import android.widget.EditText;
 
+import java.util.Iterator;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class InputValidator {
@@ -28,5 +30,24 @@ public class InputValidator {
         // Si pasa ambas validaciones, es válido
         editText.setError(null); // Limpia cualquier error previo
         return true;
+    }
+
+
+    public static String recorrerConcatenar(Set<GeneroEnum> generosSet) { // Especifica el tipo aquí
+        StringBuilder sb = new StringBuilder();
+        // El iterador ahora será correctamente Iterator<GeneroEnum>
+        Iterator<GeneroEnum> iterator = generosSet.iterator();
+
+        if (iterator.hasNext()) {
+            // Convierte el GeneroEnum a String como necesites
+            sb.append(iterator.next().name()); // O .toString(), o .getNombreMostrable()
+        }
+
+        while (iterator.hasNext()) {
+            sb.append(", ");
+            // Convierte el GeneroEnum a String como necesites
+            sb.append(iterator.next().name()); // O .toString(), o .getNombreMostrable()
+        }
+        return sb.toString();
     }
 }
